@@ -1,0 +1,56 @@
+original.cpp: inputs
+
+How many registered voters were surveyed? 20
+How many of them say they will probably vote for Trarris? 14
+How many of them say they will probably vote for Hump? 6
+
+70.0% say they will probably vote for Trarris.
+30.0% say they will probably vote for Hump.
+Trarris is predicted to win the election.
+//This is correct
+
+How many registered voters were surveyed? 100
+How many of them say they will probably vote for Trarris? 400
+How many of them say they will probably vote for Hump? 600
+
+400.0% say they will probably vote for Trarris.
+600.0% say they will probably vote for Hump.
+Hump is predicted to win the election.
+//This is correct logic, however the percents exceed any real amount.
+
+and finally,
+How many registered voters were surveyed? 100
+How many of them say they will probably vote for Trarris? 50
+How many of them say they will probably vote for Hump? 50
+
+50.0% say they will probably vote for Trarris.
+50.0% say they will probably vote for Hump.
+Hump is predicted to win the election.
+//This is an error within the program because the result should be a tie, and because of the way the if, else statement is set up, a tie goes to Hump.
+
+logic_error.cpp: 
+// I changed the greater than sign in line 30 to a less than sign.
+
+	How many registered voters were surveyed? 30
+	How many of them say they will vote for Trarris? 21
+	How many of them say they will vote for Hump? 9
+
+	70.0% say they will vote for Trarris.
+	30.0% say they will vote for Hump.
+	Hump is predicted to win the election.
+	
+// Although Trarris has a larger percentage of the votes, the program’s logic is the other way around which is why this is a valid logic error. Hump ends up winning in this scenario, however it goes both ways. This is a good example of a logic error that could be made by a beginner or with negligence.
+
+complie_error.cpp: These are the two changes I made:
+
+1) I removed the int variable from the forHump declaration on line 11. This resulted in the 		following error on lines 11, 17, 21, and 32:
+	
+	'forHump': undeclared identifier
+// This is because of the fact that the variable wasn’t established locally or globally and so the compiler has nothing to base the variable off of.
+
+2) I removed "<<" after the % text and "cout" on line 27. This resulted in the following errors on line 27:
+
+	Syntax error: missing ';' before identifier: 'endl'
+And also 
+	Function called missing argument list.
+//the syntax error is because of the << should be included directly after the cout, to refer to the percent but also after the text because it needs to direct both pieces of information to the manual. Therefore, the compiler believes that the semi-colon should go directly after the first section of text, and the endl is held out to dry at the end which causes the second error to prompt. The first is an example of a syntax error.
