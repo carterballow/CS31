@@ -1,0 +1,89 @@
+Report Doc: Project 2
+Some of the obstacles I faced while writing my code were implementing the different clearance logic between integers, strings, and characters when it came to the  ‘\n’ operation, making unique ways to clear the extra space, and ignoring unnecessary characters. I was also having difficulty maneuvering through the different ways I could output the code, and whether or not it would be better after each input or just at the end of the source code. I decided to put it at the end, however. Furthermore, the storage of variables became a difficult task. I had to create new variables in the case of wrong inputs, such as the integer cup, for example, because I couldn’t output something if the input was wrong, so I had to make an ‘out’ variable for each variable I was testing for.
+
+Some of the test cases were as follows: (this is also text for the output terminal)
+
+“First name: Carter
+Number of cups: 2
+Type of coffee(r = regular, d = decaf): d
+Any extra items ? (y / n): n
+Day of the week: Tuesday
+---
+The total charge for Carter is $9.00
+//this is a basic logic test to see if the output adds up. 2 x 4.5 is equal to 9, which makes sense.
+
+First name: Carter
+Number of cups: 2
+Type of coffee(r = regular, d = decaf): r
+Any extra items ? (y / n): n
+Day of the week: Friday
+---
+The total charge for Carter is $8.00
+//this tests the logic of the regular, which also works because 2 times 4 is equal to 8.
+
+First name: Carter
+Number of cups: 2
+Type of coffee(r = regular, d = decaf): r
+Any extra items ? (y / n): y
+Day of the week: Monday
+---
+The total charge for Carter is $9.95
+//this works to test the extra items, which should be 1 dollar and 95 cents more then the pervious example.
+
+First name: Carter
+Number of cups: 2
+Type of coffee(r = regular, d = decaf): r
+Any extra items ? (y / n): n
+Day of the week: Wednesday
+---
+The total charge for Carter is $6.80
+//this works to test the 85% discount that customers receive on Wednesday, which is true because 6.80 is 85% of 8 dollars.
+
+First name: Carter
+Number of cups: 2
+Type of coffee(r = regular, d = decaf): r
+Any extra items ? (y / n): y
+Day of the week: 5
+---
+You must enter a valid day of the week.
+//Test for invalid input for day of the week
+
+First name: Carter
+Number of cups: 2
+Type of coffee(r = regular, d = decaf): r
+Any extra items ? (y / n): 90
+Day of the week: Tuesday
+---
+You must enter y or n.
+//Test for invalid input for extra items
+
+First name: Carter
+Number of cups: 2
+Type of coffee(r = regular, d = decaf): 10
+Any extra items ? (y / n): y
+Day of the week: Tuesday
+---
+You must enter r or d.
+//Test for invalid input for type of coffee
+
+First name: Carter
+Number of cups: hi
+Type of coffee(r = regular, d = decaf): r
+Any extra items ? (y / n): y
+Day of the week: Tuesday
+---
+The number of cups must be positive.
+//Test for invalid input for cups.
+
+First name: carter
+Number of cups: 3
+Type of coffee(r = regular, d = decaf): r
+Any extra items ? (y / n): y
+Day of the week: Tuesday
+---
+The first name must start with an uppercase letter.
+//Test for invalid input for name.
+
+
+
+
