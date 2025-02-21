@@ -1,0 +1,38 @@
+Report for project 3
+Carter Ballow
+806389359
+Some of the obstacles I encounter were coming up with unique ways to address the edge cases. This was important for me because I usually would ignore the edge cases and assume the index works. I also learned to use the size rather than a normal int because this help with if theres multiple batches.
+
+A description of the design of your program. You should use pseudocode in this
+description where it clarifies the presentation pseudocode is implementing into the comment and designs for example.
+// Counts passes and defects
+// Invalidates leading zeros
+// Reset for each batch 
+I explain the edge cases and why I did what I did in the function to make sure the input only allows specific details and they add up properly.
+Test results:
+Pass test result(s) returns Q2p1d1 //prove if it works for basic input
+isValidQC returns true
+passQC returns 1
+defectQC returns 1
+totalQC returns 2
+batches returns 1 //works
+Q19p10d9 – double digit
+isValidQC returns true
+passQC returns 10
+defectQC returns 9
+totalQC returns 19
+batches returns 1//works
+
+Pass test result(s) returns Q2p1d1Q3p1d2//incase theres two of them
+isValidQC returns true
+passQC returns 2
+defectQC returns 3
+totalQC returns 5
+batches returns -1
+Q2p1d1Q3p1d1//doesn’t add up
+isValidQC returns false
+passQC returns -1
+defectQC returns -1
+totalQC returns -1
+batches returns -1
+
