@@ -1,2 +1,2 @@
 # CS31
-All Projects and study guides I used in Huang 31.
+PROJ + STUDY GUIDES FOR CS31 HUANG 2024-2025
