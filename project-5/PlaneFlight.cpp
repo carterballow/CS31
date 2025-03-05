@@ -1,45 +1,32 @@
 #include <iostream>
 #include <string>
 #include "PlaneFlight.h"
-
+using namespace std;
 PlaneFlight::PlaneFlight(string passengerName, string fromCity, string toCity, double cost, double mileage) {
-    // Cost Validation
-    if (cost >= 0.0) {
-        mCost = cost;
-    } else {
-        mCost = -1.0; // Indicate invalid cost
-    }
-
-    // Mileage Validation
-    if (mileage > 0.0) {
-        mMileage = mileage;
-    } else {
-        mMileage = -1.0; // Indicate invalid mileage
-    }
-
-    // Name Validation
-    if (!passengerName.empty()) {
-        mName = passengerName;
-    } else {
-        mName = ""; // Ignore invalid name by setting to empty string.
-    }
-
-    // City Validation
-    if (!fromCity.empty() && !toCity.empty() && fromCity != toCity) {
-        mFromCity = fromCity;
-        mToCity = toCity;
-    } else {
-        mFromCity = ""; // Ignore invalid fromCity
-        mToCity = ""; // Ignore invalid toCity
+    // Use setters to validate and set values
+    setName(passengerName);
+    setFromCity(fromCity);
+    setToCity(toCity);
+    setCost(cost);
+    setMileage(mileage);
+    if (mFromCity == mToCity) {
+        mFromCity = "";
+        mToCity = "";
     }
 }
+
+// Getters and Setters with Validation Logic
 
 double PlaneFlight::getCost() {
     return mCost;
 }
 
 void PlaneFlight::setCost(double setCost) {
-    mCost = setCost;
+    if (setCost >= 0.0) {
+        mCost = setCost;
+    } else {
+        mCost = -1.0; // Indicate invalid cost
+    }
 }
 
 double PlaneFlight::getMileage() {
@@ -47,7 +34,11 @@ double PlaneFlight::getMileage() {
 }
 
 void PlaneFlight::setMileage(double setMileage) {
-    mMileage = setMileage;
+    if (setMileage > 0.0) {
+        mMileage = setMileage;
+    } else {
+        mMileage = -1.0; // Indicate invalid mileage
+    }
 }
 
 string PlaneFlight::getName() {
@@ -55,7 +46,11 @@ string PlaneFlight::getName() {
 }
 
 void PlaneFlight::setName(string setName) {
-    mName = setName;
+    if (!setName.empty() && isValidName(setName)) {
+        mName = setName;
+    } else {
+        mName = ""; // Ignore invalid name by setting it to an empty string
+    }
 }
 
 string PlaneFlight::getFromCity() {
@@ -63,18 +58,54 @@ string PlaneFlight::getFromCity() {
 }
 
 void PlaneFlight::setFromCity(string setFromCity) {
-    mFromCity = setFromCity;
+    if (isValidCity(setFromCity)) { // Added check here
+        mFromCity = setFromCity;
+    } else {
+        mFromCity = ""; // Ignore invalid fromCity
+    }
 }
-
 string PlaneFlight::getToCity() {
     return mToCity;
 }
 
 void PlaneFlight::setToCity(string setToCity) {
-    mToCity = setToCity;
-}
-int PlaneFlight::getIsValid(){
-    return mIsValid;
+    if (isValidCity(setToCity)) { // Added check here
+        mToCity = setToCity;
+    } else {
+        mToCity = ""; // Ignore invalid toCity
+    }
 }
 
+// Helper Validation Methods
 
+bool PlaneFlight::isValidName(const string& name) const {
+    if (name.empty()) {
+        return false;
+    }
+    bool hasAlpha = false;
+    for (char c : name) {
+        if (!isalpha(c) && !isspace(c)) {
+            return false;
+        }
+        if (isalpha(c)) {
+            hasAlpha = true;
+        }
+    }
+    return hasAlpha;
+}
+
+bool PlaneFlight::isValidCity(const string& city) const {
+    if (city.empty()) {
+        return false;
+    }
+    bool hasAlpha = false;
+    for (char c : city) {
+        if (!isalpha(c) && !isspace(c)) {
+            return false;
+        }
+        if (isalpha(c)) {
+            hasAlpha = true;
+        }
+    }
+    return hasAlpha;
+}

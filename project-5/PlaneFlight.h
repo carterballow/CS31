@@ -3,7 +3,6 @@
 
 #include <string>
 using namespace std; // Use the std namespace
-
 class PlaneFlight {
 private:
     double mCost;
@@ -11,7 +10,6 @@ private:
     string mToCity;
     string mName;
     double mMileage;
-    int mIsValid; // Add this line for the validity flag
 
 public:
     PlaneFlight(string passengerName, string fromCity, string toCity, double cost, double mileage);
@@ -31,7 +29,8 @@ public:
     string getToCity();
     void setToCity(string setToCity);
 
-    int getIsValid();
+    bool isValidCity(const std::string& city) const;
+    bool isValidName(const std::string& name) const;
 };
 
 #endif // PLANEFLIGHT_H
