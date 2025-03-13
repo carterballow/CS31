@@ -47,10 +47,7 @@ bool Beetle::hasBody() const
 // build the Beetle's tail but only if the body has already been built
 void Beetle::buildTail()
 {
-    if(!hasBody()){
-        return;
-    }  
-    else 
+  
     mTail = true;
 }
 
@@ -63,9 +60,6 @@ bool Beetle::hasTail() const
 // build the Beetle's leg but only if the body has already been built
 void Beetle::buildLeg()
 {
-    if(!hasBody()){
-        return;
-    }
     currentLeg++;
     if (currentLeg == 1){
         mLeg1 = true;
@@ -110,10 +104,6 @@ bool Beetle::hasLeg4() const
 // build the Beetle's head but only if the body has already been built
 void Beetle::buildHead()
 {
-    if(!hasBody()){
-        return;
-    }
-    else
     mHead = true;
 }
 
@@ -127,9 +117,6 @@ bool Beetle::hasHead() const
 // build the Beetle's eye but only if the head has already been built
 void Beetle::buildEye()
 {
-    if(!hasHead()){
-        return;
-    }
     currentEye++;
     if (currentEye == 1){
         mEye1 = true;
@@ -156,17 +143,13 @@ bool Beetle::hasEye2() const
 void Beetle::buildAntenna()
 {
     // for now...
-    if(!hasHead()){
-        return;
-    }
     currentAntenna++;
     if (currentAntenna == 1){
         mAntenna1 = true;
     }
-    if (currentEye == 2){
+    if (currentAntenna == 2){
         mAntenna2 = true;
     }
-    return;
 }
 
 // has the Beetle's antenna been built?

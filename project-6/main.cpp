@@ -15,10 +15,114 @@ int main()
 {
     using namespace cs31;
     using namespace std;
-    
-    clearScreen();
+    // sample test code working with Die
+    Die d;
+    d.roll();
+    int value = d.getValue();
+    assert( value >= 1 && value <= 6 );
+
+    // sample test code working with Beetle
+    Beetle b;
+
+    // beetle does what you tell it to do, not enforce rules of the game.  
+    // rules of the game are left to BeetleGame to implement
+
+    assert( b.hasHead() == false );
+    assert( b.isComplete() == false );
+    b.buildHead();
+    assert( b.hasHead() );
+    assert( b.isComplete() == false );
+
+    // build Leg1 before Leg2 before Leg3 before Leg4
+    assert( b.hasLeg1() == false );
+    assert( b.hasLeg2() == false );
+    assert( b.hasLeg3() == false );
+    assert( b.hasLeg4() == false );
+    assert( b.isComplete() == false );
+    b.buildLeg();
+    assert( b.hasLeg1() );
+    assert( b.hasLeg2() == false );
+    assert( b.hasLeg3() == false );
+    assert( b.hasLeg4() == false );
+    b.buildLeg();
+    assert( b.hasLeg1() );
+    assert( b.hasLeg2() );
+    assert( b.hasLeg3() == false );
+    assert( b.hasLeg4() == false );
+    b.buildLeg();
+    assert( b.hasLeg1() );
+    assert( b.hasLeg2() );
+    assert( b.hasLeg3() );
+    assert( b.hasLeg4() == false );
+    b.buildLeg();
+    assert( b.hasLeg1() );
+    assert( b.hasLeg2() );
+    assert( b.hasLeg3() );
+    assert( b.hasLeg4() );
+    assert( b.isComplete() == false );
+
+    // build Eye1 before Eye2
+    assert( b.hasEye1() == false );
+    assert( b.hasEye2() == false );
+    assert( b.isComplete() == false );
+    b.buildEye();
+    assert( b.hasEye1() );
+    assert( b.hasEye2() == false );
+    b.buildEye();
+    assert( b.hasEye1() );
+    assert( b.hasEye2() );
+    assert( b.isComplete() == false );
+
+    assert( b.hasTail() == false );
+    assert( b.isComplete() == false );
+    b.buildTail();
+    assert( b.hasTail() );
+    assert( b.isComplete() == false );
+
+    // build Antenna1 before Antenna2
+    assert( b.hasAntenna1() == false );
+    assert( b.hasAntenna2() == false );
+    assert( b.isComplete() == false );
+    b.buildAntenna();
+    assert( b.hasAntenna1() );
+    assert( b.hasAntenna2() == false );
+    b.buildAntenna();
+    assert( b.hasAntenna1() );
+    assert( b.hasAntenna2() );
+    assert( b.isComplete() == false );
+
+    assert( b.hasBody() == false );
+    assert( b.isComplete() == false );
+    b.buildBody();
+    assert( b.hasBody() );
+    assert( b.isComplete() == true );
+
+    // cheating play
+    BeetleGame game1;
+    assert( game1.gameIsOver() == false );
+    game1.humanRoll( 1 );
+    game1.humanPlay();
+    game1.computerRoll( 1 );
+    game1.computerPlay();
+    assert( game1.getHumanBeetle().isComplete() == false );
+    assert( game1.getHumanBeetle().hasBody() == false );
+    assert( game1.getComputerBeetle().isComplete() == false );
+    assert( game1.getComputerBeetle().hasBody() == false );
+    assert( game1.gameIsOver() == false );
+    game1.humanRoll( 6 );
+    game1.humanPlay();
+    game1.computerRoll( 6 );
+    game1.computerPlay();
+    assert( game1.getHumanBeetle().isComplete() == false );
+    assert( game1.getHumanBeetle().hasBody() );
+    assert( game1.getComputerBeetle().isComplete() == false );
+    assert( game1.getComputerBeetle().hasBody() );
+
+    cout << "all tests passed!" << endl; 
     
     BeetleGame game;
+    clearScreen();
+    
     std::string action, spots, message = "(r)oll (q)uit: ";
 
     
